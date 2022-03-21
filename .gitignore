@@ -1,1 +1,4 @@
-printfTester/ 
+printfTester/
+a.out
+*.a
+*.o
