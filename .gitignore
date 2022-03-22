@@ -2,3 +2,4 @@ printfTester/
 a.out
 *.a
 *.o
+main.c

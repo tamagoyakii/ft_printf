@@ -1,75 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convertors.c                                       :+:      :+:    :+:   */
+/*   convertors_csp.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:34:55 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/03/21 19:53:10 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/03/22 18:52:57 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	convertor_c (va_list ap)
+int	convertor_c(va_list ap)
 {
-	char c;
+	char	c;
 
 	c = va_arg(ap, int);
+	if (!c)
+		
 	write(1, &c, 1);
 	return (1);
 }
 
-int	convertor_s (va_list ap)
+int	convertor_s(va_list ap)
 {
-	char	*s;
+	char	*str;
 	int		len;
 
-	s = ft_strdup(va_arg(ap, char *));
-	len = ft_strlen(s);
-	write(1, s, len);
+	str = va_arg(ap, char *);
+	len = ft_strlen(str);
+	write(1, str, len);
 	return (len);
 }
 
-int	convertor_d (va_list ap)
+int	convertor_p(va_list ap)
 {
-	long long	n;
-	int			d;
-	int			count;
+	unsigned long long	buf;
+	int					index;
+	int					count;
+	char				res[16];
 
-	d = va_arg(ap, int);
-	n = d;
-	count = 0;
-	if (d < 0)
+	buf = va_arg(ap, long long);
+	index = -1;
+	while (++index < 16 && buf)
 	{
-		write(1, "-", 1);
-		n *= -1;
-		count++;
+		res[index] = "0123456789abcdef"[buf % 16];
+		buf /= 16;
 	}
-	write_nbr(n);
-	while (n > 0)
-	{
-		n /= 10;
-		count++;
-	}
-
-	return (count);
-}
-
-int	convertor_u (va_list ap)
-{
-	unsigned int	d;
-	int				count;
-
-	d = va_arg(ap, int);
-	count = 0;
-	write_nbr(d);
-	while (d > 0)
-	{
-		d /= 10;
-		count++;
-	}
-
+	count = index + 2;
+	write(1, "0x", 2);
+	while (--index >= 0 && res[index])
+		write(1, &res[index], 1);
 	return (count);
 }

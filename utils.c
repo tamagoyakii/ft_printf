@@ -6,9 +6,11 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 18:32:40 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/03/21 19:53:39 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/03/22 18:38:36 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf.h"
 
 int	ft_strlen(const char *s)
 {
@@ -18,24 +20,6 @@ int	ft_strlen(const char *s)
 	while (s[i])
 		i++;
 	return (i);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	char	*dst;
-	int		i;
-
-	dst = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
-	if (!(dst))
-		return (0);
-	i = 0;
-	while (*(s1 + i))
-	{
-		*(dst + i) = *(s1 + i);
-		i++;
-	}
-	*(dst + i) = 0;
-	return (dst);
 }
 
 void	write_nbr(long long n)
