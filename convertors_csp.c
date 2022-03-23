@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:34:55 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/03/22 18:52:57 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/03/22 19:21:17 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ int	convertor_c(va_list ap)
 
 	c = va_arg(ap, int);
 	if (!c)
-		
-	write(1, &c, 1);
+		return (0);
+	else
+		write(1, &c, 1);
 	return (1);
 }
 
@@ -29,6 +30,8 @@ int	convertor_s(va_list ap)
 	int		len;
 
 	str = va_arg(ap, char *);
+	if (!str)
+		return (0);
 	len = ft_strlen(str);
 	write(1, str, len);
 	return (len);
