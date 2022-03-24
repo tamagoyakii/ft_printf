@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convertors_csp.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
+/*   By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:34:55 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/03/22 19:21:17 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/03/24 16:11:25 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ int	convertor_c(va_list ap)
 	char	c;
 
 	c = va_arg(ap, int);
-	if (!c)
-		return (0);
-	else
-		write(1, &c, 1);
+	write(1, &c, 1);
 	return (1);
 }
 
@@ -31,7 +28,10 @@ int	convertor_s(va_list ap)
 
 	str = va_arg(ap, char *);
 	if (!str)
-		return (0);
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
 	len = ft_strlen(str);
 	write(1, str, len);
 	return (len);
@@ -45,6 +45,12 @@ int	convertor_p(va_list ap)
 	char				res[16];
 
 	buf = va_arg(ap, long long);
+	write(1, "0x", 2);
+	if (!buf)
+	{
+		write(1, "0", 1);
+		return (3);
+	}
 	index = -1;
 	while (++index < 16 && buf)
 	{
@@ -52,7 +58,6 @@ int	convertor_p(va_list ap)
 		buf /= 16;
 	}
 	count = index + 2;
-	write(1, "0x", 2);
 	while (--index >= 0 && res[index])
 		write(1, &res[index], 1);
 	return (count);

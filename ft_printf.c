@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
+/*   By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 13:22:51 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/03/23 15:18:58 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/03/24 17:16:10 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,8 @@ int	format_convertor(char f, va_list ap)
 		return (convertor_d(ap));
 	if (f == 'u')
 		return (convertor_u(ap));
-	if (f == 'x')
-		return (convertor_x(ap));
-	if (f == 'X')
-		return (convertor_X(ap));
+	if (f == 'x' || f == 'X')
+		return (convertor_x(ap, f));
 	if (f == '%')
 		write(1, "%", 1);
 	return (1);

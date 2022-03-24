@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihyukim <jihyukim@student.42.kr>          +#+  +:+       +#+        */
+/*   By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 15:39:24 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/03/22 19:19:25 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/03/24 17:10:33 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,9 @@ int		convertor_s(va_list ap);
 int		convertor_p(va_list ap);
 int		convertor_d(va_list ap);
 int		convertor_u(va_list ap);
-int		convertor_x(va_list ap);
-int		convertor_X(va_list ap);
-char	*to_hex(unsigned long long buf, char *hex, int *index);
+int		convertor_x(va_list ap, char f);
+char	*set_base(char f);
 int		ft_strlen(const char *s);
-char	*ft_strdup(const char *s1);
 void	write_nbr(long long n);
 
 #endif
