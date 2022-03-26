@@ -6,7 +6,7 @@
 /*   By: jihyukim <jihyukim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 15:39:24 by jihyukim          #+#    #+#             */
-/*   Updated: 2022/03/24 17:10:33 by jihyukim         ###   ########.fr       */
+/*   Updated: 2022/03/26 15:44:51 by jihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 # include <unistd.h>
 # include <stdarg.h>
-# include <stdlib.h>
-
-typedef char	t_bool;
 
 int		ft_printf(const char *format, ...);
 int		format_detector(const char *format, int index, va_list ap);
